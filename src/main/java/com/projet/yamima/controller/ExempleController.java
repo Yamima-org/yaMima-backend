@@ -15,6 +15,7 @@ public class ExempleController {
 	@Autowired
 	private ExempleService exempleService ; 
 	
+	
 	@RequestMapping(value = "/saveExemple", method = RequestMethod.POST)
    public Exemple saveExemple (@RequestBody Exemple exemple ) {
 		return  (Exemple) exempleService.saveExemple(exemple);
