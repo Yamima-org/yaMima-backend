@@ -1,34 +1,46 @@
 package com.projet.yamima.model;
 
+import org.hibernate.annotations.ManyToAny;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
-
+import jakarta.persistence.Table;
+@Entity
+@Table (name = "image")
 public class Image {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "image_id_seq")
     @SequenceGenerator(name = "image_id_seq", sequenceName = "image_id_seq", initialValue = 1, allocationSize = 1)
-	  @Column(name = "idImage")
-	public Integer idImage ;
+	  @Column(name = "idimage")
+	private Integer idImage ;
 	 @Column(name = "url")
-	public String url;
+	 private String url;
 	 @Column(name = "filename")
-	public String filename;
-	 @Column(name = "idImage")
-    public String extensionimage;
+	 private String filename;
+	 @Column(name = "extensionimage")
+	 private String extensionimage;
+	 @ManyToOne
+	 @JoinColumn(name="idproduct" , referencedColumnName = "idproduct")
+	 private Product product ;
 	public Image() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Image(Integer idImage, String url, String filename, String extensionimage) {
+	public Image(Integer idImage, String url, String filename, String extensionimage, Product product) {
 		super();
 		this.idImage = idImage;
 		this.url = url;
 		this.filename = filename;
 		this.extensionimage = extensionimage;
+		this.product = product;
 	}
 	public Integer getIdImage() {
 		return idImage;
@@ -54,9 +66,16 @@ public class Image {
 	public void setExtensionimage(String extensionimage) {
 		this.extensionimage = extensionimage;
 	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 	@Override
 	public String toString() {
 		return "Image [idImage=" + idImage + ", url=" + url + ", filename=" + filename + ", extensionimage="
-				+ extensionimage + "]";
-	}
+				+ extensionimage + ", product=" + product + "]";
+	} 
+	
 }

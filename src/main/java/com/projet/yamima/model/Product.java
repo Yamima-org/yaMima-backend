@@ -1,51 +1,63 @@
 package com.projet.yamima.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "product")
 public class Product {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_id_seq")
-    @SequenceGenerator(name = "product_id_seq", sequenceName = "product_id_seq", initialValue = 1, allocationSize = 1)
-	  @Column(name = "idproduct")
-	public Integer idProduct ; 
-	@ManyToOne
-	@JoinColumn(name = "url",insertable = false, updatable = false)
-	public Image images ; 
-	@Column(name = "namepoduct")
-	public String  nameProduct ; 
+	@SequenceGenerator(name = "product_id_seq", sequenceName = "product_id_seq", initialValue = 1, allocationSize = 1)
+	@Column(name = "idproduct")
+	private Integer idProduct;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+	private List<Image> images;
+
 	@Column(name = "ingredients")
-	public String ingredients ; 
+	private String ingredients;
 	@Column(name = "price")
-	public Integer price ; 
+	private Integer price;
 	@Column(name = "description")
-	public String description ; 
+	private String description;
 	@Column(name = "statut")
-	public Status statut  ; 
-	@Column(name = "sizeprodcut")
-	public SizeImage  sizeProduct  ;
+	@Enumerated(EnumType.STRING)
+    private Status statut;
+	@Column(name ="sizeproduct")
+	@Enumerated(EnumType.STRING)
+	private SizeProduct sizeproduct;
+	@Column(name ="nameproduct")
+	private String nameproduct;
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Product(Integer idProduct, Image images, String nameProduct, String ingredients, Integer price,
-			String description, Status statut, SizeImage sizeProduct) {
+	public Product(Integer idProduct, List<Image> images, String ingredients, Integer price, String description,
+			Status statut, SizeProduct sizeproduct, String nameproduct) {
 		super();
 		this.idProduct = idProduct;
 		this.images = images;
-		this.nameProduct = nameProduct;
 		this.ingredients = ingredients;
 		this.price = price;
 		this.description = description;
 		this.statut = statut;
-		this.sizeProduct = sizeProduct;
+		this.sizeproduct = sizeproduct;
+		this.nameproduct = nameproduct;
 	}
 	public Integer getIdProduct() {
 		return idProduct;
@@ -53,17 +65,11 @@ public class Product {
 	public void setIdProduct(Integer idProduct) {
 		this.idProduct = idProduct;
 	}
-	public Image getImages() {
+	public List<Image> getImages() {
 		return images;
 	}
-	public void setImages(Image images) {
+	public void setImages(List<Image> images) {
 		this.images = images;
-	}
-	public String getNameProduct() {
-		return nameProduct;
-	}
-	public void setNameProduct(String nameProduct) {
-		this.nameProduct = nameProduct;
 	}
 	public String getIngredients() {
 		return ingredients;
@@ -89,20 +95,24 @@ public class Product {
 	public void setStatut(Status statut) {
 		this.statut = statut;
 	}
-	public SizeImage getSizeProduct() {
-		return sizeProduct;
+	public SizeProduct getSizeproduct() {
+		return sizeproduct;
 	}
-	public void setSizeProduct(SizeImage sizeProduct) {
-		this.sizeProduct = sizeProduct;
+	public void setSizeproduct(SizeProduct sizeproduct) {
+		this.sizeproduct = sizeproduct;
+	}
+	public String getNameproduct() {
+		return nameproduct;
+	}
+	public void setNameproduct(String nameproduct) {
+		this.nameproduct = nameproduct;
 	}
 	@Override
 	public String toString() {
-		return "Product [idProduct=" + idProduct + ", images=" + images + ", nameProduct=" + nameProduct
-				+ ", ingredients=" + ingredients + ", price=" + price + ", description=" + description + ", statut="
-				+ statut + ", sizeProduct=" + sizeProduct + "]";
-	} 
-	
-	
+		return "Product [idProduct=" + idProduct + ", images=" + images + ", ingredients=" + ingredients + ", price="
+				+ price + ", description=" + description + ", statut=" + statut + ", sizeproduct=" + sizeproduct
+				+ ", nameproduct=" + nameproduct + "]";
+	}
 	
 	
 }
