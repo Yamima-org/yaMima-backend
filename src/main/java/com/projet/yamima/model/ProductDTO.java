@@ -5,7 +5,7 @@ import java.util.List;
 public class ProductDTO {
 
 	private Integer idProduct;
-	private String nameProduct;
+	private String nameproduct;
 	private String ingredients;
 	private Integer  price;
 	private String description;
@@ -16,11 +16,11 @@ public class ProductDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ProductDTO(Integer idProduct, String nameProduct, String ingredients, Integer price, String description,
+	public ProductDTO(Integer idProduct, String nameproduct, String ingredients, Integer price, String description,
 			Status statut, SizeProduct sizeproduct, List<ImageDTO> listImage) {
 		super();
 		this.idProduct = idProduct;
-		this.nameProduct = nameProduct;
+		this.nameproduct = nameproduct;
 		this.ingredients = ingredients;
 		this.price = price;
 		this.description = description;
@@ -34,11 +34,11 @@ public class ProductDTO {
 	public void setIdProduct(Integer idProduct) {
 		this.idProduct = idProduct;
 	}
-	public String getNameProduct() {
-		return nameProduct;
+	public String getNameproduct() {
+		return nameproduct;
 	}
-	public void setNameProduct(String nameProduct) {
-		this.nameProduct = nameProduct;
+	public void setNameproduct(String nameproduct) {
+		this.nameproduct = nameproduct;
 	}
 	public String getIngredients() {
 		return ingredients;
@@ -76,7 +76,6 @@ public class ProductDTO {
 	public void setListImage(List<ImageDTO> listImage) {
 		this.listImage = listImage;
 	}
-	
 	
 
 }
