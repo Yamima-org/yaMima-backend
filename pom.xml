@@ -16,6 +16,11 @@
 	<description>projet familial ya mima backend </description>
 	<properties>
 		<java.version>17</java.version>
+
+		<flyway.user>postgres</flyway.user>
+		<flyway.password>postgres</flyway.password>
+		<flyway.url>jdbc:postgresql://127.0.0.1:5432/postgres</flyway.url>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -64,6 +69,10 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+        </dependency>
 
 	</dependencies>
 	<build>

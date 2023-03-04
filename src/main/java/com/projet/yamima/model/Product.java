@@ -37,8 +37,7 @@ public class Product {
 	@Column(name = "description")
 	private String description;
 	@Column(name = "statut")
-	@Enumerated(EnumType.STRING)
-    private Status statut;
+    private Boolean statut;
 	@Column(name ="sizeproduct")
 	@Enumerated(EnumType.STRING)
 	private SizeProduct sizeproduct;
@@ -49,7 +48,7 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 	public Product(Integer idProduct, List<Image> images, String ingredients, Integer price, String description,
-			Status statut, SizeProduct sizeproduct, String nameproduct) {
+			Boolean statut, SizeProduct sizeproduct, String nameproduct) {
 		super();
 		this.idProduct = idProduct;
 		this.images = images;
@@ -90,10 +89,10 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Status getStatut() {
+	public Boolean getStatut() {
 		return statut;
 	}
-	public void setStatut(Status statut) {
+	public void setStatut(Boolean statut) {
 		this.statut = statut;
 	}
 	public SizeProduct getSizeproduct() {
@@ -108,12 +107,5 @@ public class Product {
 	public void setNameproduct(String nameproduct) {
 		this.nameproduct = nameproduct;
 	}
-	@Override
-	public String toString() {
-		return "Product [idProduct=" + idProduct + ", images=" + images + ", ingredients=" + ingredients + ", price="
-				+ price + ", description=" + description + ", statut=" + statut + ", sizeproduct=" + sizeproduct
-				+ ", nameproduct=" + nameproduct + "]";
-	}
-	
 	
 }
