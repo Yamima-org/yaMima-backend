@@ -59,6 +59,7 @@ public class ProductServiceImpl implements ProductService {
 			prodDto.setStatut(prod.getStatut());
 			List<Image> listImage = prod.getImages();
 			for(Image img : listImage) {
+				
 			ImageDTO imgDTO = new ImageDTO();
 			imgDTO.setExtensionimage(img.getExtensionimage());
 			imgDTO.setFilename(img.getFilename());
@@ -67,9 +68,10 @@ public class ProductServiceImpl implements ProductService {
 			listImageDto.add(imgDTO);
 			
 			}
-			prodDto.setListImage(listImageDto);
+			prodDto.setImages(listImageDto);
 			productDTO.add(prodDto)	;
-		}
+			}
+		
 		return productDTO;
 	}
 

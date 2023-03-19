@@ -11,13 +11,13 @@ public class ProductDTO {
 	private String description;
 	private Boolean statut;
 	private SizeProduct  sizeproduct;
-    private List<ImageDTO> listImage;
+    private List<ImageDTO> images;
 	public ProductDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ProductDTO(Integer idProduct, String nameproduct, String ingredients, Integer price, String description,
-			Boolean statut, SizeProduct sizeproduct, List<ImageDTO> listImage) {
+			Boolean statut, SizeProduct sizeproduct, List<ImageDTO> images) {
 		super();
 		this.idProduct = idProduct;
 		this.nameproduct = nameproduct;
@@ -26,7 +26,7 @@ public class ProductDTO {
 		this.description = description;
 		this.statut = statut;
 		this.sizeproduct = sizeproduct;
-		this.listImage = listImage;
+		this.images = images;
 	}
 	public Integer getIdProduct() {
 		return idProduct;
@@ -70,11 +70,11 @@ public class ProductDTO {
 	public void setSizeproduct(SizeProduct sizeproduct) {
 		this.sizeproduct = sizeproduct;
 	}
-	public List<ImageDTO> getListImage() {
-		return listImage;
+	public List<ImageDTO> getImages() {
+		return images;
 	}
-	public void setListImage(List<ImageDTO> listImage) {
-		this.listImage = listImage;
+	public void setImages(List<ImageDTO> images) {
+		this.images = images;
 	}
 	
 }
