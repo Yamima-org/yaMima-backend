@@ -37,12 +37,20 @@ public class Product {
 	@Column(name = "description")
 	private String description;
 	@Column(name = "statut")
-    private Boolean statut;
-	@Column(name ="sizeproduct")
+	private Boolean statut;
+	@Column(name = "sizeproduct")
 	@Enumerated(EnumType.STRING)
 	private SizeProduct sizeproduct;
-	@Column(name ="nameproduct")
+	@Column(name = "nameproduct")
 	private String nameproduct;
+
+	private String category;
+	private Integer rating;
+
+	@ManyToOne
+	@JoinColumn(name = "idimage",referencedColumnName = "idimage")
+	private Image mainImage;
+
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -68,44 +76,81 @@ public class Product {
 	public List<Image> getImages() {
 		return images;
 	}
+
 	public void setImages(List<Image> images) {
 		this.images = images;
 	}
+
 	public String getIngredients() {
 		return ingredients;
 	}
+
 	public void setIngredients(String ingredients) {
 		this.ingredients = ingredients;
 	}
+
 	public Integer getPrice() {
 		return price;
 	}
+
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public Boolean getStatut() {
 		return statut;
 	}
+
 	public void setStatut(Boolean statut) {
 		this.statut = statut;
 	}
+
 	public SizeProduct getSizeproduct() {
 		return sizeproduct;
 	}
+
 	public void setSizeproduct(SizeProduct sizeproduct) {
 		this.sizeproduct = sizeproduct;
 	}
+
 	public String getNameproduct() {
 		return nameproduct;
 	}
+
 	public void setNameproduct(String nameproduct) {
 		this.nameproduct = nameproduct;
 	}
-	
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
+
+	public Image getMainImage() {
+		return mainImage;
+	}
+
+	public void setMainImage(Image mainImage) {
+		this.mainImage = mainImage;
+	}
+
 }

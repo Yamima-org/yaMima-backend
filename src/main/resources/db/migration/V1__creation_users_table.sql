@@ -22,7 +22,7 @@ CREATE SEQUENCE product_id_seq
 -- creation table image 
 
 
-CREATE TABLE IF NOT EXISTS public.image
+CREATE TABLE image
 (
     filename character varying(255) ,
     url character varying(255) ,
@@ -30,10 +30,10 @@ CREATE TABLE IF NOT EXISTS public.image
     idimage integer NOT NULL,
     idproduct integer,
     CONSTRAINT image_pkey PRIMARY KEY (idimage)
-)	
+);
 
 --  creation table produit
-CREATE TABLE IF NOT EXISTS public.product
+CREATE TABLE product
 (
     ingredients character varying(255) ,
     description character varying(255) ,
@@ -42,14 +42,11 @@ CREATE TABLE IF NOT EXISTS public.product
     sizeproduct character varying(100) ,
     statut character varying(200) ,
     idimage integer,
-    nameproduct character varying(255)
+    nameproduct character varying(255),
     CONSTRAINT product_pkey PRIMARY KEY (idproduct),
     CONSTRAINT foreign_key_image FOREIGN KEY (idimage)
-        REFERENCES public.image (idimage) MATCH SIMPLE
+        REFERENCES image (idimage) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
         NOT VALID		
 		) ;
-		
-	
-

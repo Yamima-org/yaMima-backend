@@ -12,6 +12,10 @@ public class ProductDTO {
 	private Boolean statut;
 	private SizeProduct  sizeproduct;
     private List<ImageDTO> images;
+	private String category;
+	private Integer rating;
+	private Image mainImage;
+
 	public ProductDTO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -75,6 +79,24 @@ public class ProductDTO {
 	}
 	public void setImages(List<ImageDTO> images) {
 		this.images = images;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public Integer getRating() {
+		return rating;
+	}
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
+	public Image getMainImage() {
+		return mainImage;
+	}
+	public void setMainImage(Image mainImage) {
+		this.mainImage = mainImage;
 	}
 	
 }

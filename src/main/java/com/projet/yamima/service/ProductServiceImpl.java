@@ -57,6 +57,10 @@ public class ProductServiceImpl implements ProductService {
 			prodDto.setPrice(prod.getPrice());
 			prodDto.setSizeproduct(prod.getSizeproduct());
 			prodDto.setStatut(prod.getStatut());
+			prodDto.setCategory(prod.getCategory());
+			prodDto.setRating(prod.getRating());
+			prod.getMainImage().setProduct(null);
+			prodDto.setMainImage(prod.getMainImage());
 			List<Image> listImage = prod.getImages();
 			for(Image img : listImage) {
 				
