@@ -1,12 +1,19 @@
 package com.projet.yamima.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 @Entity
@@ -19,46 +26,51 @@ public class Panier {
 	@SequenceGenerator(name = "panier_id_seq", sequenceName = "panier_id_seq", initialValue = 1, allocationSize = 1)
 	@Column(name = "idpanier")
     private Integer idpanier ;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "panier" , fetch = FetchType.LAZY)
+    private List<Commande> listCommande ; 
 	@Column(name = "livraison")
     private String livraison ;
 	@Column(name = "lieulivraison")
 	private String lieulivraison ;
-	@Column(name = "montanttotal")
-    private Integer montanttotal ;
-	@Column(name = "nomcomplet")
+    @Column(name = "nomcomplet")
     private String nomcomplet ; 
 	@Column(name = "mail")
     private String mail ; 
 	@Column(name = "numtel")
-    private Integer numtel ; 
-	@Column(name = "paiementmode")
-	@Enumerated(EnumType.STRING)
-    private ModePaiement paiementmode ;
-	@Column(name = "tailleproduit")
-	@Enumerated(EnumType.STRING)
-    private SizeProduct tailleproduit ;
+    private Integer numtel ;
+	@Column(name = "modepaiement")
+	 @Enumerated(EnumType.STRING)
+    private ModePaiement modepaiement ; 
+	@Column(name = "montanttotal")
+   private Integer montanttotal ;
 	public Panier() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Panier(Integer idpanier, String livraison, String lieulivraison, Integer montanttotal, String nomcomplet,
-			String mail, Integer numtel, ModePaiement paiementmode, SizeProduct tailleproduit) {
+	public Panier(Integer idpanier, List<Commande> listCommande, String livraison, String lieulivraison,
+			String nomcomplet, String mail, Integer numtel, ModePaiement modepaiement, Integer montanttotal) {
 		super();
 		this.idpanier = idpanier;
+		this.listCommande = listCommande;
 		this.livraison = livraison;
 		this.lieulivraison = lieulivraison;
-		this.montanttotal = montanttotal;
 		this.nomcomplet = nomcomplet;
 		this.mail = mail;
 		this.numtel = numtel;
-		this.paiementmode = paiementmode;
-		this.tailleproduit = tailleproduit;
+		this.modepaiement = modepaiement;
+		this.montanttotal = montanttotal;
 	}
 	public Integer getIdpanier() {
 		return idpanier;
 	}
 	public void setIdpanier(Integer idpanier) {
 		this.idpanier = idpanier;
+	}
+	public List<Commande> getListCommande() {
+		return listCommande;
+	}
+	public void setListCommande(List<Commande> listCommande) {
+		this.listCommande = listCommande;
 	}
 	public String getLivraison() {
 		return livraison;
@@ -71,12 +83,6 @@ public class Panier {
 	}
 	public void setLieulivraison(String lieulivraison) {
 		this.lieulivraison = lieulivraison;
-	}
-	public Integer getMontanttotal() {
-		return montanttotal;
-	}
-	public void setMontanttotal(Integer montanttotal) {
-		this.montanttotal = montanttotal;
 	}
 	public String getNomcomplet() {
 		return nomcomplet;
@@ -96,17 +102,18 @@ public class Panier {
 	public void setNumtel(Integer numtel) {
 		this.numtel = numtel;
 	}
-	public ModePaiement getPaiementmode() {
-		return paiementmode;
+	public ModePaiement getModepaiement() {
+		return modepaiement;
 	}
-	public void setPaiementmode(ModePaiement paiementmode) {
-		this.paiementmode = paiementmode;
+	public void setModepaiement(ModePaiement modepaiement) {
+		this.modepaiement = modepaiement;
 	}
-	public SizeProduct getTailleproduit() {
-		return tailleproduit;
+	public Integer getMontanttotal() {
+		return montanttotal;
 	}
-	public void setTailleproduit(SizeProduct tailleproduit) {
-		this.tailleproduit = tailleproduit;
+	public void setMontanttotal(Integer montanttotal) {
+		this.montanttotal = montanttotal;
 	} 
+	
 	
 }
